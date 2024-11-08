@@ -2,7 +2,7 @@ provider "aws" {
   region = "us-east-1" # Asegúrate de que esto coincide con la región donde están tus cuentas  
 }  
 
-data "aws_organizations_organization" "current" {}  
+data "aws_organizations_organization_2" "current" {}  
 
 # Habilitar AWS Security Hub en cada cuenta  
 resource "aws_securityhub_account" "security_hub" {  

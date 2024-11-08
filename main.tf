@@ -1,4 +1,5 @@
-provider "aws" {  
+provider "aws" { 
+  alias = "us-west" 
   region = "us-east-1"  
 }  
 
