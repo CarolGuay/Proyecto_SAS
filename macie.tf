@@ -1,17 +1,20 @@
-resource "aws_macie2_s3_bucket_association" "bucket_association" {  
-  bucket_arn = "arn:aws:s3:::data-analisis-datos" # Cambia esto por el ARN de tu bucket que deseas evaluar  
-  depends_on  = [aws_securityhub_account.security_hub]  
-}
-
-resource "aws_macie2_job" "macie_sensitive_data_scan" {  
-  name = "SensitiveDataScan"  
-  job_type = "SENSITIVE_DATA_DISCOVERY"  
+resource "aws_macie2_classification_job" "data_analysis_job" {  
+  job_type     = "ONE_TIME"  
+  name        = "data-analysis-job"  
+  description = "One-time job to classify sensitive data in the data-analysis-datos bucket"  
 
   s3_job_definition {  
     bucket_definitions {  
-      bucket_arn = "arn:aws:s3:::data-analisis-datos" # Cambia esto por el ARN de tu bucket que deseas escanear  
+      account_id = data.aws_caller_identity.current.account_id  
+      buckets    = ["${var.bucket_data_analisis}"]  
     }  
   }  
 
-  depends_on = [aws_macie2_s3_bucket_association.bucket_association]  
+  sampling_percentage = 100  
+
+  depends_on = [  
+    aws_organizations_account.finance_account,  
+    aws_organizations_account.hr_account,  
+    aws_organizations_account.it_account  
+  ]  
 }
