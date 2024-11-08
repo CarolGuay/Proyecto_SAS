@@ -2,7 +2,7 @@ terraform {
   required_providers {  
     aws = {  
       source  = "hashicorp/aws"  
-      version = "> 4.0"  # Asegúrate de que sea compatible con Macie  
+      version = "~> 5.0"  # O la versión que determine que es la adecuada.  
     }  
   }  
 }
