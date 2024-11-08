@@ -1,4 +1,4 @@
-data "aws_organizations_organization" "security_hub_current" {}  # Cambia a "aws_organizations_organization"  
+data "aws_organizations_organization" "security_hub_current" {}  
 
 # Habilitar AWS Security Hub en cada cuenta  
 resource "aws_securityhub_account" "security_hub" {  
@@ -26,7 +26,7 @@ resource "aws_securityhub_member" "it_member" {
 
 # Habilitar reglas de conformidad (compliance)  
 resource "aws_securityhub_standards_subscription" "cis_benchmark" {  
-  standards_arn = "arn:aws:securityhub:us-east-1::standards/cis-aws-foundations-benchmark/v/1.2.0"  # Cambiar a "standards_arn"  
+  standards_arn = "arn:aws:securityhub:us-east-1::standards/cis-aws-foundations-benchmark/v/1.2.0"  
   depends_on    = [aws_securityhub_account.security_hub]  
 }  
 
