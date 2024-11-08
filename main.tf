@@ -2,15 +2,19 @@ terraform {
   required_providers {  
     aws = {  
       source  = "hashicorp/aws"  
-      version = "~> 5.0"  # O la versión que determine que es la adecuada.  
+      version = ">= 5.0.0"  # O selecciona una versión específica en la que esté disponible el recurso  
     }  
   }  
-}
+}  
 
-provider "aws" { 
-  alias = "us-west" 
+# Configure the AWS Provider  
+provider "aws" {  
   region = "us-east-1"  
 }  
+
+# Fetch the current AWS Account ID  
+data "aws_caller_identity" "current" {} 
+
 
 data "aws_organizations_organization" "current" {}  
 
