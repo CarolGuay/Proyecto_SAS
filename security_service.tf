@@ -1,12 +1,6 @@
-# security_services.tf  
-resource "aws_guardduty_detector" "detector" {  
-  enable = true  
-}  
-
 resource "aws_inspector_resource_group" "my_resource_group" {  
-  resource_group_tags {  
-    key   = "Name"  
-    value = "MyResourceGroup"  
+  tags = {  # Reemplaza resource_group_tags con tags  
+    Name = "MyResourceGroup"  
   }  
 }  
 
