@@ -1,4 +1,4 @@
-data "aws_organizations_organization" "current" {}  # Cambia a "aws_organizations_organization"  
+data "aws_organizations_organization" "security_hub_current" {}  # Cambia a "aws_organizations_organization"  
 
 # Habilitar AWS Security Hub en cada cuenta  
 resource "aws_securityhub_account" "security_hub" {  
