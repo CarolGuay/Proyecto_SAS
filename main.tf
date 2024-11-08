@@ -1,3 +1,12 @@
+terraform {  
+  required_providers {  
+    aws = {  
+      source  = "hashicorp/aws"  
+      version = "> 4.0"  # Asegúrate de que sea compatible con Macie  
+    }  
+  }  
+}
+
 provider "aws" { 
   alias = "us-west" 
   region = "us-east-1"  
