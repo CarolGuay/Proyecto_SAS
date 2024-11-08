@@ -1,7 +1,8 @@
 pipeline {  
     agent any  
+    //Credenciales de aws
     environment {  
-        AWS_ACCESS_KEY_ID = credentials('Jenkins_Admin') // Referenciar tu credencial de AWS  
+        AWS_ACCESS_KEY_ID = credentials('Jenkins_Admin')  
         AWS_SECRET_ACCESS_KEY = credentials('Jenkins_Admin')  
     }  
     stages {  
